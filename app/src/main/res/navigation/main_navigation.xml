@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/listBook">
 
+    <fragment
+        android:id="@+id/detailBook"
+        android:name="com.example.ubayalibrary.view.fragment.BookDetailFragment"
+        android:label="Book Detail Page"
+        tools:layout="@layout/fragment_book_detail" />
+    <fragment
+        android:id="@+id/historyBook"
+        android:name="com.example.ubayalibrary.view.fragment.BookHistoryFragment"
+        android:label="History Page"
+        tools:layout="@layout/fragment_book_history" />
+    <fragment
+        android:id="@+id/listBook"
+        android:name="com.example.ubayalibrary.view.fragment.BookListFragment"
+        android:label="Book List Page"
+        tools:layout="@layout/fragment_book_list" >
+        <action
+            android:id="@+id/action_listBook_to_detailBook"
+            app:destination="@id/detailBook" />
+    </fragment>
+    <fragment
+        android:id="@+id/listJournal"
+        android:name="com.example.ubayalibrary.view.fragment.JournalFragment"
+        android:label="Journal List Page"
+        tools:layout="@layout/fragment_journal" >
+        <action
+            android:id="@+id/action_listJournal_to_detailJournal"
+            app:destination="@id/detailJournal" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailJournal"
+        android:name="com.example.ubayalibrary.view.fragment.JournalDetailFragment"
+        android:label="Journal Detail Page"
+        tools:layout="@layout/fragment_journal_detail" />
+    <fragment
+        android:id="@+id/itemLogin"
+        android:name="com.example.ubayalibrary.view.fragment.LoginFragment"
+        android:label="Login Page"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actionToBookList"
+            app:destination="@id/listBook" />
+        <action
+            android:id="@+id/action_itemLogin_to_registerFragment2"
+            app:destination="@id/itemRegister" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProfile"
+        android:name="com.example.ubayalibrary.view.fragment.ProfileFragment"
+        android:label="Profile Page"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_profileEditFragment"
+            app:destination="@id/editProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.example.ubayalibrary.view.fragment.ProfileEditFragment"
+        android:label="Edit Profile Page"
+        tools:layout="@layout/fragment_profile_edit" />
+    <fragment
+        android:id="@+id/itemRegister"
+        android:name="com.example.ubayalibrary.view.fragment.RegisterFragment"
+        android:label="Register Page">
+        <action
+            android:id="@+id/action_registerFragment_to_itemLogin2"
+            app:destination="@id/itemLogin" />
+    </fragment>
 </navigation>

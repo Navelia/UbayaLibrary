@@ -13,11 +13,6 @@
         android:title="Journal"
         app:showAsAction="always" />
     <item
-        android:id="@+id/itemHistory"
-        android:icon="@drawable/baseline_history_24"
-        android:title="History"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/itemProfile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"

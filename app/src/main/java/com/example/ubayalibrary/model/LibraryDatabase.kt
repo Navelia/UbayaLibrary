@@ -7,5 +7,5 @@ import androidx.room.RoomDatabase
 
 @Database(entities = arrayOf(User::class, Book::class, Rental::class, Journal::class), version = 1)
 abstract class LibraryDatabase:RoomDatabase() {
-
+//    Database here
 }
