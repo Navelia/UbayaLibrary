@@ -11,8 +11,7 @@ data class Journal(
     var tahun:String?,
     var abstrak:String?,
     var letak:String?,
-    var kata_kunci:String?,
-    var photoUrl:String?
+    var kata_kunci:String?
 ) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0
