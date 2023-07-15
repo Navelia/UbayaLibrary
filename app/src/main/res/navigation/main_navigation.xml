@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_listBook_to_detailBook"
             app:destination="@id/detailBook" />
+        <action
+            android:id="@+id/action_listBook_to_historyBook"
+            app:destination="@id/historyBook" />
     </fragment>
     <fragment
         android:id="@+id/listJournal"

@@ -19,8 +19,8 @@ interface BookDao {
     @Query("SELECT * FROM Book WHERE penulis LIKE '%' || :penulis || '%'")
     suspend fun filterBookByAuthor(penulis: String): Book
 
-    @Query("UPDATE Book SET id = :id, judul = :judul, penulis = :penulis, tahun = :tahun, sinopsis = :sinopsis, photoUrl = :photoUrl WHERE uuid = :uuid")
-    suspend fun updateBook(id: Int, judul: String, penulis: String, tahun: Int, sinopsis: String, photoUrl: String, uuid: Int)
+    @Query("UPDATE Book SET judul = :judul, penulis = :penulis, tahun = :tahun, sinopsis = :sinopsis, photoUrl = :photoUrl WHERE uuid = :uuid")
+    suspend fun updateBook(judul: String, penulis: String, tahun: Int, sinopsis: String, photoUrl: String, uuid: Int)
 
     @Delete
     suspend fun deleteBook(book:Book)
@@ -43,8 +43,8 @@ interface JournalDao {
     @Query("SELECT * FROM Journal WHERE penulis LIKE '%' || :penulis || '%'")
     suspend fun filterJournalByAuthor(penulis: String): Journal
 
-    @Query("UPDATE Journal SET id = :id, judul = :judul, penulis = :penulis, tahun = :tahun, abstrak = :abstrak, letak = :letak, kataKunci = :kataKunci WHERE uuid = :uuid")
-    suspend fun updateJournal(id: Int, judul: String, penulis: String, tahun: Int, abstrak: String, letak :String, kataKunci: String, uuid: Int)
+    @Query("UPDATE Journal SET judul = :judul, penulis = :penulis, tahun = :tahun, abstrak = :abstrak, letak = :letak, kataKunci = :kataKunci WHERE uuid = :uuid")
+    suspend fun updateJournal(judul: String, penulis: String, tahun: Int, abstrak: String, letak :String, kataKunci: String, uuid: Int)
 
     @Delete
     suspend fun deleteJournal(journal:Journal)

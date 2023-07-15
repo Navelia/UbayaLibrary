@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Rental(
-    var id:Int?,
     var bookId:Int?,
 //    Nama buku taruh sini supaya ga usah join ke entitas buku
     var namaBuku:String?,

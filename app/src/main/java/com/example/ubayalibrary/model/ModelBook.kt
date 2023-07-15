@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Book(
-    var id:Int?,
     var judul:String?,
     var penulis:String?,
     var tahun:Int?,
