@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Rental(
-    var id:String?,
-    var book_id:String?,
+    var id:Int?,
+    var bookId:Int?,
 //    Nama buku taruh sini supaya ga usah join ke entitas buku
-    var nama_buku:String?,
-    var user_nrp:String?,
-    var tanggal_sewa:String?,
-    var tanggal_pengembalian:String?,
+    var namaBuku:String?,
+    var userNrp:Int?,
+    var tanggalSewa:String?,
+    var tanggalPengembalian:String?,
 ) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0

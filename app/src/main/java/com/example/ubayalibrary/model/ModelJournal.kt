@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Journal(
-    var id:String?,
+    var id:Int?,
     var judul:String?,
     var penulis:String?,
-    var tahun:String?,
+    var tahun:Int?,
     var abstrak:String?,
     var letak:String?,
-    var kata_kunci:String?
+    var kataKunci:String?
 ) {
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0

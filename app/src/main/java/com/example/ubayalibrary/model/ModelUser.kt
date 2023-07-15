@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class User(
-    var nrp:String?,
+    var nrp:Int?,
     var nama:String?,
     var password:String?,
     var photoUrl:String?
