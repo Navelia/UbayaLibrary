@@ -36,6 +36,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
+                    android:text="@{book.judul}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imgBukuDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -48,6 +49,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:gravity="start"
+                    android:text="@{book.sinopsis}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -83,6 +85,8 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:scaleType="centerCrop"
+                    android:imageUrl="@{book.photoUrl}"
+                    android:progressBar="@{progressBarCoverDetail}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,6 +122,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
+                    android:text="@{book.penulis}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imgBukuDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -141,6 +146,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
+                    android:text="@{book.tahun}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imgBukuDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView8" />

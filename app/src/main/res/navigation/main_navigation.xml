@@ -9,7 +9,11 @@
         android:id="@+id/detailBook"
         android:name="com.example.ubayalibrary.view.fragment.BookDetailFragment"
         android:label="Book Detail Page"
-        tools:layout="@layout/fragment_book_detail" />
+        tools:layout="@layout/fragment_book_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/historyBook"
         android:name="com.example.ubayalibrary.view.fragment.BookHistoryFragment"
@@ -21,17 +25,17 @@
         android:label="Book List Page"
         tools:layout="@layout/fragment_book_list" >
         <action
-            android:id="@+id/action_listBook_to_detailBook"
+            android:id="@+id/actionDetailBook"
             app:destination="@id/detailBook" />
         <action
-            android:id="@+id/action_listBook_to_historyBook"
+            android:id="@+id/actionHistoryBook"
             app:destination="@id/historyBook" />
     </fragment>
     <fragment
         android:id="@+id/listJournal"
-        android:name="com.example.ubayalibrary.view.fragment.JournalFragment"
+        android:name="com.example.ubayalibrary.view.fragment.JournalListFragment"
         android:label="Journal List Page"
-        tools:layout="@layout/fragment_journal" >
+        tools:layout="@layout/fragment_journal_list">
         <action
             android:id="@+id/action_listJournal_to_detailJournal"
             app:destination="@id/detailJournal" />
