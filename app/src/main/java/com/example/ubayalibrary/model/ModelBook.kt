@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Book(
     var judul:String?,
     var penulis:String?,
-    var tahun:Int?,
+    var tahun:String?,
     var sinopsis:String?,
     var photoUrl:String?
 ) {

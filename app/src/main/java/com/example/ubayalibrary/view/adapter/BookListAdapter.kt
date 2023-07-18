@@ -31,7 +31,7 @@ class BookListAdapter(val bookList: ArrayList<Book>):RecyclerView.Adapter<BookLi
 
     override fun onBookDetailClick(v: View) {
         val uuid = v.tag.toString().toInt()
-        val action = BookListFragmentDirections.actionDetailBook(uuid)
+        val action = BookListFragmentDirections.actionToDetailBook(uuid)
     }
 
     fun updateTodoList(newBookList: List<Book>){

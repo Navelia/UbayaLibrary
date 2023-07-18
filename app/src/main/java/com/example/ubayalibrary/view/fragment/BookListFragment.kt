@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -40,7 +39,7 @@ class BookListFragment : Fragment() {
         recViewBook.adapter = bookListAdapter
 
         view.findViewById<FloatingActionButton>(R.id.fabSeeHistory).setOnClickListener{
-            val action = BookListFragmentDirections.actionHistoryBook()
+            val action = BookListFragmentDirections.actionToHistoryBook()
             Navigation.findNavController(it).navigate(action)
         }
 

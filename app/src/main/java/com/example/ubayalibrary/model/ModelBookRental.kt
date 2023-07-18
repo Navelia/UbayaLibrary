@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Rental(
-    var bookId:Int?,
+    var bookId:String?,
 //    Nama buku taruh sini supaya ga usah join ke entitas buku
     var namaBuku:String?,
-    var userNrp:Int?,
+    var userNrp:String?,
     var tanggalSewa:String?,
     var tanggalPengembalian:String?,
 ) {

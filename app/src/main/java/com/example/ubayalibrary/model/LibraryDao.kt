@@ -56,10 +56,10 @@ interface UserDao {
     suspend fun insertAll(vararg user: User)
 
     @Query("SELECT * FROM User WHERE nrp= :nrp AND password= :password")
-    suspend fun selectUser(nrp:Int, password:String):User
+    suspend fun selectUser(nrp:String, password:String):User
 
     @Query("UPDATE User SET nama= :nama, password= :password, photoUrl= :photoUrl  WHERE nrp = :nrp")
-    suspend fun updateUser(nama: String, password: String, photoUrl: String, nrp: Int)
+    suspend fun updateUser(nama: String, password: String, photoUrl: String, nrp: String)
 
     @Delete
     suspend fun deleteUser(user:User)
@@ -71,7 +71,7 @@ interface RentalDao {
     suspend fun insertAll(vararg rental: Rental)
 
     @Query("SELECT * FROM Rental WHERE userNrp= :userNrp")
-    suspend fun selectRental(userNrp:Int):Rental
+    suspend fun selectRental(userNrp:String):Rental
 
     @Delete
     suspend fun deleteRental(user:Rental)

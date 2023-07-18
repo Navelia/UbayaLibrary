@@ -25,10 +25,10 @@
         android:label="Book List Page"
         tools:layout="@layout/fragment_book_list" >
         <action
-            android:id="@+id/actionDetailBook"
+            android:id="@+id/actionToDetailBook"
             app:destination="@id/detailBook" />
         <action
-            android:id="@+id/actionHistoryBook"
+            android:id="@+id/actionToHistoryBook"
             app:destination="@id/historyBook" />
     </fragment>
     <fragment
@@ -37,7 +37,7 @@
         android:label="Journal List Page"
         tools:layout="@layout/fragment_journal_list">
         <action
-            android:id="@+id/action_listJournal_to_detailJournal"
+            android:id="@+id/actionToJournalDetail"
             app:destination="@id/detailJournal" />
     </fragment>
     <fragment
@@ -54,7 +54,7 @@
             android:id="@+id/actionToBookList"
             app:destination="@id/listBook" />
         <action
-            android:id="@+id/action_itemLogin_to_registerFragment2"
+            android:id="@+id/actionToRegister"
             app:destination="@id/itemRegister" />
     </fragment>
     <fragment
@@ -63,7 +63,7 @@
         android:label="Profile Page"
         tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_profileEditFragment"
+            android:id="@+id/actionToEditProfile"
             app:destination="@id/editProfile" />
     </fragment>
     <fragment
@@ -76,7 +76,7 @@
         android:name="com.example.ubayalibrary.view.fragment.RegisterFragment"
         android:label="Register Page">
         <action
-            android:id="@+id/action_registerFragment_to_itemLogin2"
+            android:id="@+id/actionToLogin"
             app:destination="@id/itemLogin" />
     </fragment>
 </navigation>

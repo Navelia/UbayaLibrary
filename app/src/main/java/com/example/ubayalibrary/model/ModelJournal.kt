@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Journal(
     var judul:String?,
     var penulis:String?,
-    var tahun:Int?,
+    var tahun:String?,
     var abstrak:String?,
     var letak:String?,
     var kataKunci:String?

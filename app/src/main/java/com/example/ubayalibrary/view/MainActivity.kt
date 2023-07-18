@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         navView.visibility = View.VISIBLE
     }
 
-    fun onLoginSuccess(userId: Int, nrp: Int, name: String, photoUrl:String) {
+    fun onLoginSuccess(userId: Int, nrp: String, name: String, photoUrl:String) {
         val sharedPref = this.getSharedPreferences("Preferences", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putInt("userId", userId)
-        editor.putInt("nrp", nrp)
+        editor.putString("nrp", nrp)
         editor.putString("name", name)
         editor.putString("photoUrl", photoUrl)
         editor.apply()

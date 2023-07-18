@@ -29,6 +29,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val txtRegister = view.findViewById<TextView>(R.id.txtRegister)
+        txtRegister.setOnClickListener {
+            val action = LoginFragmentDirections.actionToRegister()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         val txtNrpLogin = view.findViewById<TextView>(R.id.txtNRPLogin)
         val txtPassLogin = view.findViewById<TextView>(R.id.txtPassLogin)
@@ -37,7 +43,7 @@ class LoginFragment : Fragment() {
 
 
         btnLogin.setOnClickListener {
-            val nrp = txtNrpLogin.text.toString().toInt()
+            val nrp = txtNrpLogin.text.toString()
             val password = txtPassLogin.text.toString()
 
             userViewModel.selectUser(nrp, password)
@@ -47,7 +53,7 @@ class LoginFragment : Fragment() {
                 if (user != null) {
                     // Retrieve the necessary data from the user object
                     val userId = user.uuid.toInt()
-                    val nrp = user.nrp ?: 0
+                    val nrp = user.nrp ?: ""
                     val nama = user.nama ?: ""
                     val photoUrl = user.photoUrl ?: ""
 
