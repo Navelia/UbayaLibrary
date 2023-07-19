@@ -3,11 +3,15 @@ package com.example.ubayalibrary.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.ubayalibrary.R
@@ -22,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.visibility = View.VISIBLE
 
         val navView = findViewById<NavigationView>(R.id.navView)
-        navView.visibility = View.VISIBLE
+        navView.visibility = View.GONE
     }
 
     fun onLoginSuccess(userId: Int, nrp: String, name: String, photoUrl:String) {
@@ -67,8 +71,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
     override fun onSupportNavigateUp(): Boolean {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         return NavigationUI.navigateUp(navController,drawerLayout) || super.onSupportNavigateUp()
     }
+
+//    override fun onBackPressed() {
+//        Toast.makeText(this, "You cannot go back", Toast.LENGTH_SHORT).show()
+//    }
 }

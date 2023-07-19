@@ -16,7 +16,6 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
     val userLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
 
-
     private val job = Job()
 
     fun addUser(list:List<User>) {
@@ -40,8 +39,12 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
 
     fun selectUser(nrp: String, password: String) {
         launch {
-            val db = buildDB(getApplication())
-            usersLD.value = db.userDao().selectUser(nrp, password)
+            try {
+                val db = buildDB(getApplication())
+                usersLD.value = db.userDao().selectUser(nrp, password)
+            } catch (e: Exception) {
+                userLoadErrorLD.postValue(true)
+            }
         }
     }
 
