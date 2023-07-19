@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 else -> showNavigation()
             }
         }
-
+//      Supaya tidak memunculkan draawer navigation
         setDrawerLockMode(false)
     }
 

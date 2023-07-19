@@ -64,6 +64,7 @@ class LoginFragment : Fragment() {
                     val mainActivity = requireActivity() as MainActivity
                     mainActivity.onLoginSuccess(userId, nrp, nama, photoUrl)
 
+//                    Supaya memunculkan draawer navigation
                     (requireActivity() as MainActivity).setDrawerLockMode(true)
 
                     val action = LoginFragmentDirections.actionToBookList()
