@@ -1,6 +1,7 @@
 package com.example.ubayalibrary.util
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -15,7 +16,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-@BindingAdapter("imageUrl", "progressBar")
+@BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadImageFromUrl(view: ImageView, url:String?, pb: ProgressBar){
     view.loadImage(url, pb)
 }
@@ -23,7 +24,7 @@ fun loadImageFromUrl(view: ImageView, url:String?, pb: ProgressBar){
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
     Picasso.get()
         .load(url)
-        .resize(400,500)
+        .resize(200,300)
         .centerCrop()
         .error(R.drawable.ic_baseline_error_24)
         .into(this, object: Callback {
@@ -32,7 +33,7 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
             }
 
             override fun onError(e: Exception?) {
-
+                Log.d("picasso", e.toString())
             }
         })
 }

@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.ubayalibrary.R
 import com.example.ubayalibrary.view.MainActivity
 import com.example.ubayalibrary.view.adapter.BookListAdapter
@@ -47,12 +50,38 @@ class BookListFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        observeViewModel()
+        view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutBookList).setOnRefreshListener{
+            view.findViewById<RecyclerView>(R.id.recViewBookList).visibility = View.GONE
+            view.findViewById<TextView>(R.id.txtErrorBookList).visibility = View.GONE
+            view.findViewById<ProgressBar>(R.id.progressLoadBookList).visibility = View.VISIBLE
+            viewModel.refresh()
+            view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutBookList).isRefreshing = false
+        }
+
+        observeViewModel(view)
     }
 
-    fun observeViewModel(){
+    fun observeViewModel(view: View){
         viewModel.bookLD.observe(viewLifecycleOwner, Observer{
-            bookListAdapter.updateTodoList(it)
+            bookListAdapter.updateBookList(it)
+        })
+        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner, Observer{
+            if(it == true){
+                view.findViewById<TextView>(R.id.txtErrorBookList).visibility = View.VISIBLE
+            }
+            else{
+                view.findViewById<TextView>(R.id.txtErrorBookList).visibility = View.GONE
+            }
+        })
+        viewModel.loadingLD.observe(viewLifecycleOwner, Observer{
+            if(it == true){
+                view.findViewById<RecyclerView>(R.id.recViewBookList).visibility = View.GONE
+                view.findViewById<ProgressBar>(R.id.progressLoadBookList).visibility = View.VISIBLE
+            }
+            else{
+                view.findViewById<RecyclerView>(R.id.recViewBookList).visibility = View.VISIBLE
+                view.findViewById<ProgressBar>(R.id.progressLoadBookList).visibility = View.GONE
+            }
         })
     }
 }

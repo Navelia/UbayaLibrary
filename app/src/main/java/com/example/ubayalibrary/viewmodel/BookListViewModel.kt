@@ -28,5 +28,6 @@ class BookListViewModel(application: Application): AndroidViewModel(application)
 
             bookLD.postValue(db.bookDao().selectAllBook())
         }
+        loadingLD.value = false
     }
 }

@@ -40,11 +40,13 @@
 
                 <ImageView
                     android:id="@+id/imgBukuCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
+                    android:imageUrl="@{book.photoUrl}"
+                    android:progressBar="@{progressBarCoverList}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_launcher_background" />
@@ -89,7 +91,7 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtPenulisCard"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgBukuCard"
                     app:layout_constraintEnd_toEndOf="@+id/imgBukuCard"
                     app:layout_constraintStart_toStartOf="@+id/imgBukuCard"
                     app:layout_constraintTop_toTopOf="@+id/imgBukuCard" />
