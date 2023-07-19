@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ubayalibrary.R
+import com.example.ubayalibrary.view.MainActivity
 import com.example.ubayalibrary.view.adapter.BookListAdapter
 import com.example.ubayalibrary.viewmodel.BookListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,6 +31,8 @@ class BookListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         viewModel = ViewModelProvider(this).get(BookListViewModel::class.java)
         viewModel.refresh()

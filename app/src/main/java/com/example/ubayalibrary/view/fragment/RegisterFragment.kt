@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.ubayalibrary.R
 import com.example.ubayalibrary.model.User
+import com.example.ubayalibrary.view.MainActivity
 import com.example.ubayalibrary.viewmodel.UserViewModel
 
 class RegisterFragment : Fragment() {
@@ -27,6 +28,8 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val txtLogin = view.findViewById<TextView>(R.id.txtLogin)
         txtLogin.setOnClickListener {
@@ -63,6 +66,5 @@ class RegisterFragment : Fragment() {
                 Navigation.findNavController(requireView()).navigate(action)
             }
         }
-
     }
 }

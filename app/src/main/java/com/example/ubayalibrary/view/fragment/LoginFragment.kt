@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.ubayalibrary.R
@@ -28,6 +29,8 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val txtRegister = view.findViewById<TextView>(R.id.txtRegister)
         txtRegister.setOnClickListener {
@@ -60,6 +63,8 @@ class LoginFragment : Fragment() {
                     // Use the onLoginSuccess function in the MainActivity
                     val mainActivity = requireActivity() as MainActivity
                     mainActivity.onLoginSuccess(userId, nrp, nama, photoUrl)
+
+                    (requireActivity() as MainActivity).setDrawerLockMode(true)
 
                     val action = LoginFragmentDirections.actionToBookList()
                     Navigation.findNavController(it).navigate(action)

@@ -70,15 +70,22 @@ class MainActivity : AppCompatActivity() {
                 else -> showNavigation()
             }
         }
-    }
 
+        setDrawerLockMode(false)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         return NavigationUI.navigateUp(navController,drawerLayout) || super.onSupportNavigateUp()
     }
 
-//    override fun onBackPressed() {
-//        Toast.makeText(this, "You cannot go back", Toast.LENGTH_SHORT).show()
-//    }
+    override fun onBackPressed() {
+      Toast.makeText(this, "You cannot go back", Toast.LENGTH_SHORT).show()
+    }
+
+    fun setDrawerLockMode(enabled: Boolean) {
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        val lockMode = if (enabled) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+        drawerLayout.setDrawerLockMode(lockMode)
+    }
 }
