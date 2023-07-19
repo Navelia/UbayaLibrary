@@ -15,18 +15,43 @@ class BookListViewModel(application: Application): AndroidViewModel(application)
     val bookLD = MutableLiveData<List<Book>>()
     val bookLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    var filter = ""
+    var keyword = ""
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
+    fun filter(filter1: String, keyword1: String){
+        filter = filter1
+        keyword = keyword1
+    }
+
     fun refresh(){
         loadingLD.value = true
         bookLoadErrorLD.value = false
-        launch {
-            val db = buildDB(getApplication())
+        if(keyword == ""){
+            launch {
+                val db = buildDB(getApplication())
 
-            bookLD.postValue(db.bookDao().selectAllBook())
+                bookLD.postValue(db.bookDao().selectAllBook())
+            }
+        }
+        else{
+            if(filter == "Judul"){
+                launch {
+                    val db = buildDB(getApplication())
+
+                    bookLD.postValue(db.bookDao().filterBookByName(keyword))
+                }
+            }
+            else{
+                launch {
+                    val db = buildDB(getApplication())
+
+                    bookLD.postValue(db.bookDao().filterBookByAuthor(keyword))
+                }
+            }
         }
         loadingLD.value = false
     }

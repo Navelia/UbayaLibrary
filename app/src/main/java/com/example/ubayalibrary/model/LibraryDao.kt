@@ -14,10 +14,10 @@ interface BookDao {
     suspend fun selectBook(id:Int):Book
 
     @Query("SELECT * FROM Book WHERE judul LIKE '%' || :judul || '%'")
-    suspend fun filterBookByName(judul: String): Book
+    suspend fun filterBookByName(judul: String): List<Book>
 
     @Query("SELECT * FROM Book WHERE penulis LIKE '%' || :penulis || '%'")
-    suspend fun filterBookByAuthor(penulis: String): Book
+    suspend fun filterBookByAuthor(penulis: String): List<Book>
 
     @Query("UPDATE Book SET judul = :judul, penulis = :penulis, tahun = :tahun, sinopsis = :sinopsis, photoUrl = :photoUrl WHERE uuid = :uuid")
     suspend fun updateBook(judul: String, penulis: String, tahun: Int, sinopsis: String, photoUrl: String, uuid: Int)

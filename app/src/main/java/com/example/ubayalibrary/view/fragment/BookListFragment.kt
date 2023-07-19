@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -54,11 +58,28 @@ class BookListFragment : Fragment() {
             view.findViewById<RecyclerView>(R.id.recViewBookList).visibility = View.GONE
             view.findViewById<TextView>(R.id.txtErrorBookList).visibility = View.GONE
             view.findViewById<ProgressBar>(R.id.progressLoadBookList).visibility = View.VISIBLE
+            val spinner = view.findViewById<Spinner>(R.id.spinnerFilterBook)
+            spinner.setSelection(0)
+            view.findViewById<EditText>(R.id.txtKeywordBook).setText("")
+            viewModel.filter("", "")
             viewModel.refresh()
             view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutBookList).isRefreshing = false
         }
 
         observeViewModel(view)
+
+        val filter = resources.getStringArray(R.array.BookFilter)
+        val spinner = view.findViewById<Spinner>(R.id.spinnerFilterBook)
+        val adapter = context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, filter) }
+        spinner.adapter = adapter
+
+        view.findViewById<Button>(R.id.btnSearchBook).setOnClickListener{
+            val spinner = view.findViewById<Spinner>(R.id.spinnerFilterBook)
+            val filter = spinner.selectedItem.toString()
+            val keyword = view.findViewById<EditText>(R.id.txtKeywordBook).text.toString()
+            viewModel.filter(filter, keyword)
+            viewModel.refresh()
+        }
     }
 
     fun observeViewModel(view: View){
