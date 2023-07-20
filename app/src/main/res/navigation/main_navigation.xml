@@ -44,7 +44,11 @@
         android:id="@+id/detailJournal"
         android:name="com.example.ubayalibrary.view.fragment.JournalDetailFragment"
         android:label="Journal Detail Page"
-        tools:layout="@layout/fragment_journal_detail" />
+        tools:layout="@layout/fragment_journal_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/itemLogin"
         android:name="com.example.ubayalibrary.view.fragment.LoginFragment"

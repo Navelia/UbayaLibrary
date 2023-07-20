@@ -8,6 +8,9 @@
             name = "journal"
             type = "com.example.ubayalibrary.model.Journal">
         </variable>
+        <variable
+            name="listener"
+            type="com.example.ubayalibrary.view.JournalItemInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +24,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:tag="@{journal.uuid}"
+            android:onClick="@{listener::onJournalDetailClick}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +63,7 @@
 
                 <TextView
                     android:id="@+id/txtJudulJurnal"
+                    android:text="@{journal.judul}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -68,6 +75,7 @@
 
                 <TextView
                     android:id="@+id/txtPenulisJurnal"
+                    android:text="@{journal.penulis}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

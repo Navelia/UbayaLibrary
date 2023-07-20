@@ -42,7 +42,7 @@ class JournalViewModel (application:Application) : AndroidViewModel(application)
         }
         else
         {
-            if(filterBy == "Author")
+            if(filterBy == "Penulis")
             {
                 launch {
                     val db = buildDB(getApplication())

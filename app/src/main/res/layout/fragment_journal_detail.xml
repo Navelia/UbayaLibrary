@@ -8,9 +8,6 @@
             name = "journal"
             type = "com.example.ubayalibrary.model.Journal">
         </variable>
-        <variable
-            name="listener"
-            type="com.example.ubayalibrary.view.BookDetailInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
