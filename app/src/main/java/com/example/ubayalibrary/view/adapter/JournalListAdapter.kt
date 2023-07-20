@@ -29,6 +29,7 @@ class JournalListAdapter (val journalList: ArrayList<Journal>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: JournalViewHolder, position: Int) {
         holder.view.journal = journalList[position]
+        holder.view.listener = this
     }
 
     override fun onJournalDetailClick(v: View) {
@@ -41,5 +42,6 @@ class JournalListAdapter (val journalList: ArrayList<Journal>): RecyclerView.Ada
     fun updateJournalList(newJournalList : List<Journal>){
         journalList.clear()
         journalList.addAll(newJournalList)
+        notifyDataSetChanged()
     }
 }

@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ubayalibrary.R
+import com.example.ubayalibrary.databinding.FragmentBookDetailBinding
 import com.example.ubayalibrary.databinding.FragmentJournalDetailBinding
 import com.example.ubayalibrary.viewmodel.JournalDetailViewModel
 
@@ -18,8 +21,8 @@ class JournalDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_journal_detail, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentJournalDetailBinding>(inflater, R.layout.fragment_journal_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +32,16 @@ class JournalDetailFragment : Fragment() {
 
         val id = JournalDetailFragmentArgs.fromBundle(requireArguments()).id
         detailViewModel.fetch(id)
+
+        observeViewModel()
     }
+
+    fun observeViewModel()
+    {
+        detailViewModel.journalLD.observe(viewLifecycleOwner, Observer{
+            dataBinding.journal = it
+        })
+    }
+
 
 }
