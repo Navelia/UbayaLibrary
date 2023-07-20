@@ -92,7 +92,7 @@ class BookDetailFragment : Fragment(), BookDetailInterface {
                 if (user != null) {
                     viewModel.rent(list)
                     Toast.makeText(requireContext(), "Rent Success", Toast.LENGTH_SHORT).show()
-                    MainActivity.showNotification("Sewa Bukumu Berhasil", "Selamat penyewaan buku " + book.judul + " berhasil. Jangan lupa kembalikan buku pada " + tanggalPengembalian + " ya")
+                    NotificationHelper(requireContext()).createNotification("Sewa Bukumu Berhasil", "Selamat penyewaan buku " + book.judul + " berhasil. Jangan lupa kembalikan buku pada " + tanggalPengembalian + " ya")
                 } else {
                     Toast.makeText(requireContext(), "Invalid password", Toast.LENGTH_SHORT).show()
                 }

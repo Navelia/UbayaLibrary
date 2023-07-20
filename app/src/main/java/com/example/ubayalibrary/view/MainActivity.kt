@@ -23,28 +23,6 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
-    init {
-        instance = this
-    }
-
-    companion object{
-        private var instance:MainActivity ?= null
-
-        @SuppressLint("MissingPermission")
-        fun showNotification(title:String, content:String){
-            val channelId = "${instance?.packageName}-${instance?.getString(R.string.app_name)}"
-            val notificationBuilder = NotificationCompat.Builder(instance!!.applicationContext, channelId).apply {
-                setContentTitle(title)
-                setContentText(content)
-                setStyle(NotificationCompat.BigTextStyle())
-                priority = NotificationCompat.PRIORITY_DEFAULT
-                setAutoCancel(true)
-            }
-            val notificationManager = NotificationManagerCompat.from(instance!!.applicationContext.applicationContext!!)
-
-            notificationManager.notify(1001, notificationBuilder.build())
-        }
-    }
 
     private fun showNavigation(){
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
