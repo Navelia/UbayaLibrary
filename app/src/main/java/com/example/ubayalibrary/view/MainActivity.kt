@@ -1,5 +1,6 @@
 package com.example.ubayalibrary.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,6 +23,28 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    init {
+        instance = this
+    }
+
+    companion object{
+        private var instance:MainActivity ?= null
+
+        @SuppressLint("MissingPermission")
+        fun showNotification(title:String, content:String){
+            val channelId = "${instance?.packageName}-${instance?.getString(R.string.app_name)}"
+            val notificationBuilder = NotificationCompat.Builder(instance!!.applicationContext, channelId).apply {
+                setContentTitle(title)
+                setContentText(content)
+                setStyle(NotificationCompat.BigTextStyle())
+                priority = NotificationCompat.PRIORITY_DEFAULT
+                setAutoCancel(true)
+            }
+            val notificationManager = NotificationManagerCompat.from(instance!!.applicationContext.applicationContext!!)
+
+            notificationManager.notify(1001, notificationBuilder.build())
+        }
+    }
 
     private fun showNavigation(){
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
