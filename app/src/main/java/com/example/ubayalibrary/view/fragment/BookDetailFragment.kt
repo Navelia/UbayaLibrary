@@ -18,6 +18,7 @@ import com.example.ubayalibrary.R
 import com.example.ubayalibrary.databinding.FragmentBookDetailBinding
 import com.example.ubayalibrary.model.Book
 import com.example.ubayalibrary.model.Rental
+import com.example.ubayalibrary.util.NotificationHelper
 import com.example.ubayalibrary.view.BookDetailInterface
 import com.example.ubayalibrary.view.MainActivity
 import com.example.ubayalibrary.viewmodel.BookDetailViewModel
@@ -91,6 +92,7 @@ class BookDetailFragment : Fragment(), BookDetailInterface {
                 if (user != null) {
                     viewModel.rent(list)
                     Toast.makeText(requireContext(), "Rent Success", Toast.LENGTH_SHORT).show()
+                    MainActivity.showNotification("Sewa Bukumu Berhasil", "Selamat penyewaan buku " + book.judul + " berhasil. Jangan lupa kembalikan buku pada " + tanggalPengembalian + " ya")
                 } else {
                     Toast.makeText(requireContext(), "Invalid password", Toast.LENGTH_SHORT).show()
                 }
