@@ -38,10 +38,10 @@ interface JournalDao {
     suspend fun selectJournal(id:Int):Journal
 
     @Query("SELECT * FROM Journal WHERE judul LIKE '%' || :judul || '%'")
-    suspend fun filterJournalByName(judul: String): Journal
+    suspend fun filterJournalByName(judul: String): List<Journal>
 
     @Query("SELECT * FROM Journal WHERE penulis LIKE '%' || :penulis || '%'")
-    suspend fun filterJournalByAuthor(penulis: String): Journal
+    suspend fun filterJournalByAuthor(penulis: String): List<Journal>
 
     @Query("UPDATE Journal SET judul = :judul, penulis = :penulis, tahun = :tahun, abstrak = :abstrak, letak = :letak, kataKunci = :kataKunci WHERE uuid = :uuid")
     suspend fun updateJournal(judul: String, penulis: String, tahun: Int, abstrak: String, letak :String, kataKunci: String, uuid: Int)
@@ -71,7 +71,7 @@ interface RentalDao {
     suspend fun insertAll(vararg rental: Rental)
 
     @Query("SELECT * FROM Rental WHERE userNrp= :userNrp")
-    suspend fun selectRental(userNrp:String):Rental
+    suspend fun selectRental(userNrp:String):List<Rental>
 
     @Delete
     suspend fun deleteRental(user:Rental)
