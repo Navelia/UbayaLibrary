@@ -51,6 +51,14 @@ class BookHistoryFragment : Fragment() {
         recViewBook.layoutManager = LinearLayoutManager(context)
         recViewBook.adapter = rentalListAdapter
 
+        view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutBookHistory).setOnRefreshListener{
+            view.findViewById<RecyclerView>(R.id.recViewBookHistory).visibility = View.GONE
+            view.findViewById<TextView>(R.id.txtErrorBookHistory).visibility = View.GONE
+            view.findViewById<ProgressBar>(R.id.progressLoadBookHistory).visibility = View.VISIBLE
+            nrp?.let { viewModel.refresh(it) }
+            view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutBookHistory).isRefreshing = false
+        }
+
         observeViewModel(view)
     }
 
