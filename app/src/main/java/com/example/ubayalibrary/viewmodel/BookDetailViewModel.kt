@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.ubayalibrary.model.Book
+import com.example.ubayalibrary.model.Rental
 import com.example.ubayalibrary.util.buildDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,13 @@ class BookDetailViewModel(application: Application): AndroidViewModel(applicatio
         launch {
             val db = buildDB(getApplication())
             bookLD.postValue(db.bookDao().selectBook(id))
+        }
+    }
+
+    fun rent(list:List<Rental>){
+        launch {
+            val db = buildDB(getApplication())
+            db.rentalDao().insertAll(*list.toTypedArray())
         }
     }
 }

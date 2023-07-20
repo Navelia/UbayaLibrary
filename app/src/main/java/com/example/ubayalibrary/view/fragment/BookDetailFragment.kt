@@ -1,5 +1,6 @@
 package com.example.ubayalibrary.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +11,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ubayalibrary.R
 import com.example.ubayalibrary.databinding.FragmentBookDetailBinding
+import com.example.ubayalibrary.model.Book
+import com.example.ubayalibrary.model.Rental
+import com.example.ubayalibrary.view.BookDetailInterface
 import com.example.ubayalibrary.viewmodel.BookDetailViewModel
+import java.time.LocalDateTime
+import java.time.Period
+import java.time.format.DateTimeFormatter
 
-class BookDetailFragment : Fragment() {
+class BookDetailFragment : Fragment(), BookDetailInterface {
     private lateinit var viewModel: BookDetailViewModel
     private lateinit var dataBinding: FragmentBookDetailBinding
+    private lateinit var book: Book
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +44,24 @@ class BookDetailFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.bookLD.observe(viewLifecycleOwner, Observer{
-            dataBinding.book = it
+            book = it
+            dataBinding.book = book
         })
+    }
+
+    override fun onBookRentClick(v: View) {
+        val sharedPref = this.activity?.getSharedPreferences("Preferences", Context.MODE_PRIVATE)
+        val nrp = sharedPref?.getString("nrp","")
+
+        var bookId = book.uuid
+        var namaBuku = book.judul
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val tanggalSewa = LocalDateTime.now().format(formatter)
+        var tanggalPengembalian = LocalDateTime.now().plusDays(3).format(formatter)
+
+        var rental = Rental(bookId.toString(), namaBuku, nrp, tanggalSewa, tanggalPengembalian)
+
+        val list = listOf(rental)
+        viewModel.rent(list)
     }
 }

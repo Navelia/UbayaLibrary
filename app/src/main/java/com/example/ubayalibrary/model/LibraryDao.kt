@@ -73,6 +73,9 @@ interface RentalDao {
     @Query("SELECT * FROM Rental WHERE userNrp= :userNrp")
     suspend fun selectRental(userNrp:String):List<Rental>
 
+    @Query("UPDATE Rental SET bookId= :bookId, namaBuku= :namaBuku, userNrp= :userNrp, tanggalSewa= :tanggalSewa, tanggalPengembalian= :tanggalPengembalian WHERE uuid= :uuid")
+    suspend fun updateRental(bookId: String, namaBuku: String, userNrp: String, tanggalSewa: String, tanggalPengembalian: String, uuid: Int)
+
     @Delete
     suspend fun deleteRental(user:Rental)
 }
