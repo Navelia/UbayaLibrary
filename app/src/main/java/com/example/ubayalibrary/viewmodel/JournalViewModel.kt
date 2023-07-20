@@ -15,19 +15,50 @@ class JournalViewModel (application:Application) : AndroidViewModel(application)
     val journalLD = MutableLiveData<List<Journal>>()
     val journalLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    var filterBy = ""
+    var keyword = ""
 
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
+    fun journalFilter(filterUsed: String, keywordUsed: String)
+    {
+        filterBy = filterUsed
+        keyword = keywordUsed
+    }
+
     fun refresh(){
         loadingLD.value = true
         journalLoadErrorLD.value = false
-        launch {
-            val db = buildDB(getApplication())
+        if(keyword == "")
+        {
+            launch {
+                val db = buildDB(getApplication())
 
-            journalLD.postValue(db.journalDao().selectAllJournal())
+                journalLD.postValue(db.journalDao().selectAllJournal())
+            }
         }
+        else
+        {
+            if(filterBy == "Author")
+            {
+                launch {
+                    val db = buildDB(getApplication())
+
+                    journalLD.postValue(db.journalDao().filterJournalByAuthor(keyword))
+                }
+            }
+            else
+            {
+                launch {
+                    val db = buildDB(getApplication())
+
+                    journalLD.postValue(db.journalDao().filterJournalByName(keyword))
+                }
+            }
+        }
+        loadingLD.value = false
     }
 }

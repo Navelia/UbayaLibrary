@@ -1,4 +1,31 @@
 package com.example.ubayalibrary.view.adapter
 
-class JournalListAdapter {
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ubayalibrary.R
+import com.example.ubayalibrary.databinding.ItemJournalListBinding
+import com.example.ubayalibrary.model.Journal
+import com.example.ubayalibrary.view.JournalItemInterface
+
+class JournalListAdapter (val journalList: ArrayList<Journal>): RecyclerView.Adapter<JournalListAdapter.JournalViewHolder>(), JournalItemInterfacenterface {
+    class JournalViewHolder(var view: ItemJournalListBinding): RecyclerView.ViewHolder(view.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+
+        val view = DataBindingUtil.inflate<ItemJournalListBinding>(inflater, R.layout.item_journal_list, parent, false)
+
+        return JournalViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return journalList.size
+    }
+
+    override fun onBindViewHolder(holder: JournalViewHolder, position: Int) {
+        holder.view.journal = journalList[position]
+        holder.view.listener = this
+    }
 }

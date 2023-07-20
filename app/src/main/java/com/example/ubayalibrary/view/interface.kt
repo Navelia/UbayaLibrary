@@ -9,3 +9,7 @@ interface BookItemInterface{
 interface BookDetailInterface{
     fun onBookRentClick(v: View)
 }
+
+interface JournalItemInterface{
+    fun onJournalDetailClick(v: View)
+}

@@ -8,6 +8,9 @@
             name = "journal"
             type = "com.example.ubayalibrary.model.Journal">
         </variable>
+        <variable
+            name="listener"
+            type="com.example.ubayalibrary.view.BookDetailInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +34,7 @@
 
                 <TextView
                     android:id="@+id/txtJudulJurnalDetail"
+                    android:text="@{journal.judul}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -42,6 +46,7 @@
 
                 <TextView
                     android:id="@+id/txtAbstrakJurnalDetail"
+                    android:text="@{journal.abstrak}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -54,6 +59,7 @@
 
                 <TextView
                     android:id="@+id/txtKeywordJurnalDetail"
+                    android:text="@{journal.kataKunci}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -115,6 +121,7 @@
 
                 <TextView
                     android:id="@+id/txtPenulisJournalDetail"
+                    android:text="@{journal.penulis}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -150,6 +157,7 @@
 
                 <TextView
                     android:id="@+id/txtTahunJournalDetail"
+                    android:text="@{journal.tahun}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -161,6 +169,7 @@
 
                 <TextView
                     android:id="@+id/txtLetakJurnalDetail"
+                    android:text="@{journal.letak}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -175,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="199dp" />
+                    app:layout_constraintGuide_end="212dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
