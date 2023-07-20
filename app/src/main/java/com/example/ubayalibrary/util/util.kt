@@ -97,7 +97,4 @@ private fun populateSeedData(database: SupportSQLiteDatabase) {
     database.execSQL("INSERT INTO 'Journal' (uuid, judul, penulis, tahun, abstrak, letak, kataKunci) VALUES (6, 'New England Journal of Medicine', 'Sarah Thompson', '2026', 'The New England Journal of Medicine is a medical journal published since 1812. It publishes clinical research and review articles on various medical specialties.', 'Library Section F', 'medical, health, research')")
     database.execSQL("INSERT INTO 'Journal' (uuid, judul, penulis, tahun, abstrak, letak, kataKunci) VALUES (7, 'Nature Medicine', 'David Wilson', '2027', 'Nature Medicine is a medical research journal published since 1995. It covers biomedical research, drug discovery, and clinical practice in the field of medicine.', 'Library Section G', 'medical, health, biomedical research')")
     database.execSQL("INSERT INTO 'Journal' (uuid, judul, penulis, tahun, abstrak, letak, kataKunci) VALUES (8, 'Journal of the American Chemical Society', 'Jennifer Anderson', '2028', 'The Journal of the American Chemical Society is a scientific journal published since 1879. It publishes research articles in the field of chemistry and related disciplines.', 'Library Section H', 'chemistry, research, scientific journal')")
-
-//    Rental Seeder
-    database.execSQL("INSERT INTO 'Rental' (uuid, bookId, namaBuku, userNrp, tanggalSewa, tanggalPengembalian) VALUES (1, '1', 'Test', '160420023', '20-07-2023', '23-07-2023')")
 }
