@@ -58,6 +58,9 @@ interface UserDao {
     @Query("SELECT * FROM User WHERE nrp= :nrp AND password= :password")
     suspend fun selectUser(nrp:String, password:String):User
 
+    @Query("SELECT * FROM User WHERE nrp= :nrp")
+    suspend fun selectUser1(nrp:String):User
+
     @Query("UPDATE User SET nama= :nama, password= :password, photoUrl= :photoUrl  WHERE nrp = :nrp")
     suspend fun updateUser(nama: String, password: String, photoUrl: String, nrp: String)
 

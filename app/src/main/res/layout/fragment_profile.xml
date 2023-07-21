@@ -6,8 +6,10 @@
     <data>
         <variable
             name="user"
-            type = "com.example.ubayalibrary.model.User">
-        </variable>
+            type = "com.example.ubayalibrary.model.User"/>
+        <variable
+            name="listener"
+            type="com.example.ubayalibrary.view.ProfileInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +32,7 @@
 
         <TextView
             android:id="@+id/txtNRPUser"
+            android:text="@{user.nrp}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -43,6 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="35dp"
+            android:imageUrl="@{user.photoUrl}"
+            android:progressBar="@{progressBarProfil}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -71,6 +76,7 @@
 
         <TextView
             android:id="@+id/txtNamaUser"
+            android:text="@{user.nama}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -99,6 +105,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
+            android:onClick="@{listener::onProfileEditClick}"
             android:text="EDIT PROFILE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

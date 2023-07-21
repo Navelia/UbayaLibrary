@@ -48,6 +48,20 @@ class UserViewModel(application: Application): AndroidViewModel(application), Co
         }
     }
 
+    fun showProfile(nrp:String){
+        launch {
+            val db = buildDB(getApplication())
+            usersLD.postValue(db.userDao().selectUser1(nrp))
+        }
+    }
+
+    fun update(nama: String, password: String, photoUrl: String, nrp: String){
+        launch {
+            val db = buildDB(getApplication())
+            db.userDao().updateUser(nama, password , photoUrl, nrp)
+        }
+    }
+
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 }

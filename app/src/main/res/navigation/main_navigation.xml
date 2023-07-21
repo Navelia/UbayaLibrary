@@ -69,12 +69,22 @@
         <action
             android:id="@+id/actionToEditProfile"
             app:destination="@id/editProfile" />
+        <argument
+            android:name="nrp"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionProfileToLogin"
+            app:destination="@id/itemLogin" />
     </fragment>
     <fragment
         android:id="@+id/editProfile"
         android:name="com.example.ubayalibrary.view.fragment.ProfileEditFragment"
         android:label="Edit Profile Page"
-        tools:layout="@layout/fragment_profile_edit" />
+        tools:layout="@layout/fragment_profile_edit" >
+        <argument
+            android:name="nrp"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/itemRegister"
         android:name="com.example.ubayalibrary.view.fragment.RegisterFragment"

@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.ubayalibrary.R
-import com.example.ubayalibrary.databinding.FragmentBookDetailBinding
 import com.example.ubayalibrary.databinding.FragmentJournalDetailBinding
 import com.example.ubayalibrary.viewmodel.JournalDetailViewModel
 
