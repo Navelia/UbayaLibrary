@@ -1,5 +1,6 @@
 package com.example.ubayalibrary.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,6 +33,13 @@ class LoginFragment : Fragment() {
 
         (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
+        val sharedPref = this.activity?.getSharedPreferences("Preferences", Context.MODE_PRIVATE)
+        val nrp = sharedPref?.getString("nrp","")
+        if (nrp != ""){
+            val action = LoginFragmentDirections.actionToBookList()
+            Navigation.findNavController(view).navigate(action)
+        }
+
         val txtRegister = view.findViewById<TextView>(R.id.txtRegister)
         txtRegister.setOnClickListener {
             val action = LoginFragmentDirections.actionToRegister()
@@ -43,7 +51,6 @@ class LoginFragment : Fragment() {
         val txtPassLogin = view.findViewById<TextView>(R.id.txtPassLogin)
 
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-
 
         btnLogin.setOnClickListener {
             val nrp = txtNrpLogin.text.toString()
